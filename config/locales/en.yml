@@ -30,7 +30,7 @@ en:
     index:
       title: Home page
   layouts:
-    application_name: Timeline
+    application_name: FunkyStarterPlusPlus
     welcome: Welcome, %{user}
   simple_form:
     labels:

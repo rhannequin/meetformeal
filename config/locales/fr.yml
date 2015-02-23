@@ -30,7 +30,7 @@ fr:
     index:
       title: Page d'accueil
   layouts:
-    application_name: Timeline
+    application_name: Funkystarterpp
     welcome: Bienvenue, %{user}
   simple_form:
     labels:

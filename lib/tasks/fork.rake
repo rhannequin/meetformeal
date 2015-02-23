@@ -22,9 +22,9 @@ task :fork, :location do |_, args|
   files.each do |file|
     full_path = "#{location}/#{file}"
     text = File.read full_path
-    text = text.gsub(/funkystarter/, project_string)
-    text = text.gsub(/Funkystarter/, project_name)
-    text = text.gsub(/FunkyStarter/, module_name)
+    text = text.gsub(/funkystarterpp/, project_string)
+    text = text.gsub(/Funkystarterpp/, project_name)
+    text = text.gsub(/FunkyStarterPlusPlus/, module_name)
     File.open(full_path, 'w') { |f| f.puts text }
   end
 end
