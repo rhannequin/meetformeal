@@ -10,6 +10,7 @@ feature 'Sign up' do
   describe 'when user provides valid credentials' do
     background do
       fill_in I18n.t(:'simple_form.labels.user.email'), with: user.email
+      fill_in I18n.t(:'simple_form.labels.user.name'), with: user.name
       find('#user_password').set 'password'
       find('#user_password_confirmation').set 'password'
       click_button I18n.t(:'devise.registrations.new.sign_up')
@@ -17,6 +18,7 @@ feature 'Sign up' do
 
     scenario 'he should be logged in' do
       expect(page).to have_content I18n.t(:'devise.registrations.signed_up')
+      expect(page).to have_content user.name
       expect(current_path).to eq(root_path)
       expect(User.where(email: user.email)).not_to be_nil
     end

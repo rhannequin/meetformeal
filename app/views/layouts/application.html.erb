@@ -15,7 +15,7 @@
 
     <div>
     <% if user_signed_in? -%>
-      <p><%= t :'layouts.welcome', user: current_user.email %></p>
+      <p><%= t :'layouts.welcome', user: current_user.name %></p>
       <p><%= link_to t(:'devise.sessions.destroy.sign_out'), destroy_user_session_path, method: :delete %></p>
     <% end -%>
     </div>

@@ -36,6 +36,7 @@ fr:
     labels:
       user:
         email: Adresse e-mail
+        name: Nom d'utilisateur
         password: Mot de passe
         password_confirmation: Confirmez le mot de passe
         remember_me: Se souvenir de moi

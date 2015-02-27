@@ -9,6 +9,9 @@ gem 'bson_ext'
 
 # Authentication
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 # Environment configuration
 gem 'figaro'

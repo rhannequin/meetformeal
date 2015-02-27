@@ -1,10 +1,14 @@
 class User
   include Mongoid::Document
 
+  field :name,               type: String
+  field :provider,           type: String
+  field :uid,                type: String
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable,
+         :trackable, :validatable, :omniauthable
 
   ## Database authenticatable
   field :email,              type: String, default: ''
@@ -35,7 +39,24 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
+  # Validations
+  validates :email, uniqueness: true
+
   def self.serialize_into_session(record)
     [record.id.to_s, record.authenticatable_salt]
+  end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid)
+      .first_or_create { |u| user_hash(u, auth) }
+  end
+
+  def self.user_hash(user, auth)
+    user.provider = auth.provider
+    user.uid = auth.uid
+    user.name = auth.info.name
+    user.email = auth.info.email
+    user.password = Devise.friendly_token[0, 20]
+    user
   end
 end

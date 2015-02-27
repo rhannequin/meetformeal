@@ -29,7 +29,22 @@ feature 'Sign in' do
     scenario 'he should be signed in' do
       expect(current_path).to eq(root_path)
       expect(page).to have_content I18n.t(:'devise.sessions.signed_in')
+      expect(page).to have_content user.name
       expect(page).to have_link I18n.t(:'devise.sessions.destroy.sign_out')
+    end
+  end
+
+  %w(twitter facebook).each do |provider|
+    describe "when signing up with #{provider.capitalize}" do
+      background do
+        send :"mock_auth_#{provider}"
+        visit user_omniauth_authorize_path(provider: provider)
+      end
+
+      scenario "user is connected with his #{provider.capitalize} account" do
+        expect(page).to have_content I18n.t(:'devise.sessions.destroy.sign_out')
+        expect(page).to have_content "#{provider.capitalize} User" # See Macros::Omniauth
+      end
     end
   end
 end
