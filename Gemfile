@@ -7,6 +7,10 @@ gem 'rails', '~> 4.2.0'
 gem 'mongoid', '~> 4.0.0'
 gem 'bson_ext'
 
+# Application server
+gem 'unicorn'
+gem 'unicorn-rails'
+
 # Authentication
 gem 'devise'
 gem 'omniauth'
