@@ -11,10 +11,11 @@
 app_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 app_env = ENV['RACK_ENV'] || 'development'
 is_production = app_env == 'production'
+is_development = app_env == 'development'
 
 # Use at least one worker per core if you're on a dedicated server,
 # more will usually help for _short_ waits on databases/caches.
-worker_processes 4
+worker_processes(is_production ? 4 : 1)
 
 # Since Unicorn is never exposed to outside clients, it does not need to
 # run on the standard HTTP port (80), there is no reason to start Unicorn
@@ -30,40 +31,42 @@ working_directory app_root # available in 0.94.0+
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
 
-if is_production
-  tmp_dir_socket = File.expand_path(File.join(app_root, 'tmp', 'socket'))
-  FileUtils.mkdir_p tmp_dir_socket unless Dir.exist?(tmp_dir_socket)
-  listen_socket_file = File.expand_path(File.join(tmp_dir_socket, 'app_unicorn.sock.0'))
+tmp_dir_socket = File.expand_path(File.join(app_root, 'tmp', 'socket'))
+FileUtils.mkdir_p tmp_dir_socket unless Dir.exist?(tmp_dir_socket)
+listen_socket_file = File.expand_path(File.join(tmp_dir_socket, 'unicorn.sock.0'))
 
-  # listen on both a Unix domain socket and a TCP port,
-  # we use a shorter backlog for quicker failover when busy
-  listen listen_socket_file, backlog: 512
-
-  tmp_dir_pid = File.expand_path(File.join(app_root, 'tmp', 'pids'))
-  FileUtils.mkdir_p tmp_dir_pid unless Dir.exist?(tmp_dir_pid)
-  pid_file = File.expand_path(File.join(tmp_dir_pid, 'app_unicorn.pid'))
-
-  # feel free to point this anywhere accessible on the filesystem
-  pid pid_file
-
-  tmp_dir_log = File.expand_path(File.join(app_root, 'tmp', 'log'))
-  FileUtils.mkdir_p tmp_dir_log unless Dir.exist?(tmp_dir_log)
-
-  stderr_file = File.expand_path(File.join(tmp_dir_log, "error_app_unicorn_#{app_env}.log"))
-  stdout_file = File.expand_path(File.join(tmp_dir_log, "app_unicorn_#{app_env}.log"))
-
-  # By default, the Unicorn logger will write to stderr.
-  # Additionally, ome applications/frameworks log to stderr or stdout,
-  # so prevent them from going to /dev/null when daemonized here:
-  stderr_path stderr_file
-  stdout_path stdout_file
-else # listen on 0.0.0.0 for heroku or development
+# listen on both a Unix domain socket and a TCP port,
+# we use a shorter backlog for quicker failover when busy
+listen listen_socket_file, backlog: 512
+if is_development
   listen('0.0.0.0:' + "#{ENV['PORT'] || '5000'}", backlog: 512, tcp_nopush: true)
+else
+  listen 8080, tcp_nopush: true
 end
+
+tmp_dir_pid = File.expand_path(File.join(app_root, 'tmp', 'pids'))
+FileUtils.mkdir_p tmp_dir_pid unless Dir.exist?(tmp_dir_pid)
+pid_file = File.expand_path(File.join(tmp_dir_pid, 'unicorn.pid'))
+
+# feel free to point this anywhere accessible on the filesystem
+pid pid_file
+
+tmp_dir_log = File.expand_path(File.join(app_root, 'tmp', 'log'))
+FileUtils.mkdir_p tmp_dir_log unless Dir.exist?(tmp_dir_log)
+
+stderr_file = File.expand_path(File.join(tmp_dir_log, "unicorn_#{app_env}_error.log"))
+stdout_file = File.expand_path(File.join(tmp_dir_log, "unicorn_#{app_env}.log"))
+
+# By default, the Unicorn logger will write to stderr.
+# Additionally, ome applications/frameworks log to stderr or stdout,
+# so prevent them from going to /dev/null when daemonized here:
+stderr_path stderr_file
+stdout_path stdout_file
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
 preload_app true
+
 GC.respond_to?(:copy_on_write_friendly=) &&
   GC.copy_on_write_friendly = true
 
