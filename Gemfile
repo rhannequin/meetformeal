@@ -58,7 +58,9 @@ end
 group :development do
   gem 'spring'                        # Keeps application running in the background
   gem 'quiet_assets'                  # Turns off the Rails asset pipeline log
-  gem 'rubocop'
+  gem 'rubocop'                       # Ruby style guide
+  gem 'capistrano'                    # Deployment
+  gem 'capistrano-rails'              # Capistrano extras for Rails
 end
 
 group :test do
