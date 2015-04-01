@@ -2,11 +2,10 @@
 lock '3.4.0'
 
 set :application, 'funky-starter-plus-plus'
-set :repo_url, 'https://user:password@example.com/repo.git'
+set :repo_url, 'https://example.com/repo.git'
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-ask :branch, :unicorn
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, -> { "/directory/#{fetch(:application)}" }
@@ -34,6 +33,14 @@ set :deploy_to, -> { "/directory/#{fetch(:application)}" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+# RVM setup
+set :rvm_ruby_string, :local              # use the same ruby as used locally for deployment
+set :rvm_autolibs_flag, 'read-only'       # more info: rvm help autolibs
+set :bundle_dir, ''
+set :bundle_flags, '--system --quiet'
+before 'deploy:setup', 'rvm:install_rvm'  # install/update RVM
+before 'deploy:setup', 'rvm:install_ruby' # install Ruby and create gemset
 
 namespace :deploy do
 

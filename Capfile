@@ -4,6 +4,12 @@ require 'capistrano/setup'
 # Include default deployment tasks
 require 'capistrano/deploy'
 
+# Bundler support
+require 'capistrano/bundler'
+
+# RVM support
+require 'rvm/capistrano'
+
 # Rails support
 require 'capistrano/rails'
 

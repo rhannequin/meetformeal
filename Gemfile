@@ -60,7 +60,9 @@ group :development do
   gem 'quiet_assets'                  # Turns off the Rails asset pipeline log
   gem 'rubocop'                       # Ruby style guide
   gem 'capistrano'                    # Deployment
-  gem 'capistrano-rails'              # Capistrano extras for Rails
+  gem 'capistrano-rails'              # Rails support for Capistrano
+  gem 'capistrano-bundler'            # Bundler support for Capistrano
+  gem 'rvm-capistrano'                # RVM support for Capistrano
 end
 
 group :test do
