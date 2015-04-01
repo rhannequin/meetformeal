@@ -4,14 +4,6 @@ require 'capistrano/setup'
 # Include default deployment tasks
 require 'capistrano/deploy'
 
-# Bundler support
-require 'capistrano/bundler'
-
-# RVM support
-require 'rvm/capistrano'
-
-# Rails support
-require 'capistrano/rails'
 
 # Include tasks from other gems included in your Gemfile
 #
@@ -31,6 +23,10 @@ require 'capistrano/rails'
 # require 'capistrano/rails/assets'
 # require 'capistrano/rails/migrations'
 # require 'capistrano/passenger'
+
+require 'rvm/capistrano'
+require 'capistrano/bundler'
+require 'capistrano/rails'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
