@@ -34,16 +34,26 @@ set :deploy_to, -> { "/directory/#{fetch(:application)}" }
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-# RVM setup
-set :rvm_ruby_string, :local              # use the same ruby as used locally for deployment
-set :rvm_autolibs_flag, 'read-only'       # more info: rvm help autolibs
-set :bundle_dir, ''
-set :bundle_flags, '--system --quiet'
-before 'deploy', 'rvm:install_rvm'        # install/update RVM
-before 'deploy', 'rvm:install_ruby'       # install Ruby and create gemset
+# rbenv setup
+set :rbenv_type, :user
+set :rbenv_ruby, File.read('.ruby-version').strip
+
+# Bundler setup
+set :bundle_binstubs, -> { shared_path.join('bin') }
+set :bundle_without, %w{development test}.join(' ')
+set :bundle_flags, '--deployment --quiet --binstubs'
+set :bundle_jobs, 4
+
+# Environment PATH
+set :default_environment, {
+  'PATH' => './bin:$PATH'
+}
+
+# Clean
+set :keep_releases, 5
+after 'deploy', 'deploy:cleanup'
 
 namespace :deploy do
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -52,5 +62,4 @@ namespace :deploy do
       # end
     end
   end
-
 end

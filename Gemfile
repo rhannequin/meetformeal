@@ -62,7 +62,7 @@ group :development do
   gem 'capistrano'                    # Deployment
   gem 'capistrano-rails'              # Rails support for Capistrano
   gem 'capistrano-bundler'            # Bundler support for Capistrano
-  gem 'rvm-capistrano'                # RVM support for Capistrano
+  gem 'capistrano-rbenv'              # rbenv support for Capistrano
 end
 
 group :test do
