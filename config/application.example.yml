@@ -25,5 +25,10 @@ test:
   DEVISE_SECRET_KEY: "abc123_test"
 
 production:
+  APP_EMAIL_SENDER: "you.email@domain.com"
+  FACEBOOK_KEY: "KEY"
+  FACEBOOK_SECRET: "SECRET"
+  TWITTER_KEY: "KEY"
+  TWITTER_SECRET: "SECRET"
   SECRET_KEY_BASE: "abc123_prod"
   DEVISE_SECRET_KEY: "abc123_prod"
