@@ -32,3 +32,8 @@ production:
   TWITTER_SECRET: "SECRET"
   SECRET_KEY_BASE: "abc123_prod"
   DEVISE_SECRET_KEY: "abc123_prod"
+  MONGOID_USER: "mongoid_user"
+  MONGOID_PASSWORD: "mongoid_password"
+  MONGOID_HOST: "mongoid_host"
+  MONGOID_PORT: 27017
+  MONGOID_DATABASE: "mongoid_database"
