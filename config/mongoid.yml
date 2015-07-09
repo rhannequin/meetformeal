@@ -74,9 +74,9 @@ test:
 production:
   sessions:
     default:
-      host: <%= ENV['MONGOID_HOST'] %>
-      port: <%= ENV['MONGOID_PORT'] %>
       database: <%= ENV['MONGOID_DATABASE'] %>
+      hosts:
+        - <%= ENV['MONGOID_HOST'] %>:<%= ENV['MONGOID_PORT'] %>
       options:
         # The default consistency is :eventual, which reads from
         # secondaries when possible.
