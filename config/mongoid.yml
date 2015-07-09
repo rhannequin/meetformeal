@@ -74,7 +74,9 @@ test:
 production:
   sessions:
     default:
-      uri: "mongodb://<%= ENV['MONGOID_USER'] %>:<%= ENV['MONGOID_PASSWORD'] %>@<%= ENV['MONGOID_HOST'] %>:<%= ENV['MONGOID_POST'] %>/<%= ENV['MONGOID_DATABASE'] %>"
+      host: <%= ENV['MONGOID_HOST'] %>
+      port: <%= ENV['MONGOID_PORT'] %>
+      database: <%= ENV['MONGOID_DATABASE'] %>
       options:
         # The default consistency is :eventual, which reads from
         # secondaries when possible.
