@@ -78,4 +78,4 @@ production:
       password: <%= ENV['MONGOID_PASSWORD'] %>
       database: <%= ENV['MONGOID_DATABASE'] %>
       hosts:
-        - <%= ENV['MONGOID_HOST'] %>:<%= ENV['MONGOID_PORT'] %>
+        - "<%= ENV['MONGOID_HOST'] %>:<%= ENV['MONGOID_PORT'] %>"
