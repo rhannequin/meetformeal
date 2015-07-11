@@ -10,6 +10,13 @@ This is a fork from [Funky Starter](https://github.com/rhannequin/funky-starter)
 
 Please check [Funky Starter](https://github.com/rhannequin/funky-starter) for more information.
 
+## Current issues
+
+This project is *under development* and **really** not ready yet. Here are some issues I am currently working on to:
+
+* [Rails Mongoid fails to authenticate](http://stackoverflow.com/questions/29875839/rails-mongoid-fails-to-authenticate-failed-with-error-13-not-authorized-for)
+* [Empty environment variables after deployment](https://github.com/laserlemon/figaro/issues/210)
+
 ## Usage
 
 ```sh

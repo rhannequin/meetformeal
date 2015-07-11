@@ -50,11 +50,13 @@ Edit the configuration file `/etc/mongod.conf` and ensure to enable those parame
 
 ```
 auth = true
+httpinterface = false
 ```
 
 Launch `$ mongo` and create admin and user:
 
 ```
+> use admin
 > db.createUser({ user: 'admin', pwd: 'xxx', roles: [{ role: 'userAdminAnyDatabase', db: 'admin' }] })
 > db.auth('admin', 'xxx')
 > use my_database
