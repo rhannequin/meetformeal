@@ -45,3 +45,18 @@ $ echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/
 $ sudo apt-get update
 $ sudo apt-get install -y mongodb-org
 ```
+
+Edit the configuration file `/etc/mongod.conf` and ensure to enable those parameters:
+
+```
+auth = true
+```
+
+Launch `$ mongo` and create admin and user:
+
+```
+> db.createUser({ user: 'admin', pwd: 'xxx', roles: [{ role: 'userAdminAnyDatabase', db: 'admin' }] })
+> db.auth('admin', 'xxx')
+> use my_database
+> db.createUser({ user: 'xxx', pwd: 'xxx', roles: [{ role: 'readWrite', db: 'xxx' }] })
+```
