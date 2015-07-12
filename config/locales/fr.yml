@@ -1,5 +1,9 @@
 ---
 fr:
+  admin:
+    users:
+      index:
+        title: Utilisateurs
   devise:
     passwords:
       edit:
@@ -32,6 +36,13 @@ fr:
   layouts:
     application_name: Funkystarterpp
     welcome: Bienvenue, %{user}
+  mongoid:
+    attributes:
+      user:
+        name: Nom d'utilisateur
+        email: Adresse e-mail
+        provider: Fournisseur
+        created_at: Date d'inscription
   simple_form:
     labels:
       user:

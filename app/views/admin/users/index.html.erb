@@ -1,0 +1,24 @@
+<h2><%= t :'.title' %></h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><%= t :'mongoid.attributes.user.name' %></th>
+      <th><%= t :'mongoid.attributes.user.email' %></th>
+      <th><%= t :'mongoid.attributes.user.provider' %></th>
+      <th><%= t :'mongoid.attributes.user.created_at' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email.nil? ? empty_char : user.email %></td>
+      <td><%= provider_profile_link user.provider, user.uid %></td>
+      <td><%= l user.created_at, format: :short %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

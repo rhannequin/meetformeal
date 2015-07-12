@@ -8,4 +8,19 @@ module ApplicationHelper
     else :danger
     end
   end
+
+  def empty_char
+    '&#8709;'.html_safe
+  end
+
+  def provider_profile_link(provider, uid)
+    case provider
+    when 'twitter'
+      link_to provider.capitalize, "https://twitter.com/intent/user?user_id=#{uid}"
+    when 'facebook'
+      link_to provider.capitalize, "https://www.facebook.com/#{uid}"
+    else
+      empty_char
+    end
+  end
 end

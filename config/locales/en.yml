@@ -1,5 +1,9 @@
 ---
 en:
+  admin:
+    users:
+      index:
+        title: Users
   devise:
     passwords:
       edit:
@@ -32,6 +36,13 @@ en:
   layouts:
     application_name: FunkyStarterPlusPlus
     welcome: Welcome, %{user}
+  mongoid:
+    attributes:
+      user:
+        name: Name
+        email: Email
+        provider: Provider
+        created_at: Signed in
   simple_form:
     labels:
       user:
