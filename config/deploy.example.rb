@@ -13,6 +13,9 @@ set :deploy_to, -> { "/directory/#{fetch(:application)}" }
 # Default value for :scm is :git
 # set :scm, :git
 
+# Only one git clone, then git pull
+set :deploy_via, :remote_cache
+
 # Default value for :format is :pretty
 # set :format, :pretty
 
