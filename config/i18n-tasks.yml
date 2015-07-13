@@ -79,6 +79,7 @@ ignore_unused:
 # - 'simple_form.{placeholders,hints,labels}.*'
 # - 'simple_form.{error_notification,required}.:'
 - 'simple_form.labels.*'
+- 'unauthorized.default'
 
 ## Exclude these keys from `i18n-tasks eq-base' report
 # ignore_eq_base:

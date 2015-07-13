@@ -16,4 +16,8 @@ FactoryGirl.define do
       sequence(:uid) { |n| "#{provider}-user-#{n}" }
     end
   end
+
+  factory :admin, parent: :user do
+    after(:create) { |user| user.grant :admin }
+  end
 end

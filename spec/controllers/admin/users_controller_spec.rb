@@ -2,9 +2,16 @@ require 'rails_helper'
 
 describe Admin::UsersController, type: :controller do
   describe 'GET #index' do
-    let(:user) { create :user }
+    let(:user) { create :admin }
 
     before(:each) { sign_in user }
+
+    it "can't access if not authorized" do
+      sign_in create(:user)
+      get :index
+      expect(response).not_to be_success
+      expect(response).not_to have_http_status(200)
+    end
 
     it 'responds successfully with an HTTP 200 status code' do
       get :index
