@@ -39,10 +39,11 @@ fr:
   mongoid:
     attributes:
       user:
-        name: Nom d'utilisateur
-        email: Adresse e-mail
-        provider: Fournisseur
         created_at: Date d'inscription
+        email: Adresse e-mail
+        name: Nom d'utilisateur
+        provider: Fournisseur
+        roles: Rôles
   simple_form:
     labels:
       user:

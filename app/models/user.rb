@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  rolify
 
   field :name,               type: String
   field :provider,           type: String

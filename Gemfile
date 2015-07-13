@@ -17,6 +17,10 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
+# Authorization
+gem 'cancancan'
+gem 'rolify'
+
 # Environment configuration
 gem 'figaro'
 

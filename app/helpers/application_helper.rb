@@ -23,4 +23,8 @@ module ApplicationHelper
       empty_char
     end
   end
+
+  def roles_list(roles)
+    roles.any? ? roles.map(&:name).join(', ') : empty_char
+  end
 end

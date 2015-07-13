@@ -7,6 +7,7 @@
       <th><%= t :'mongoid.attributes.user.name' %></th>
       <th><%= t :'mongoid.attributes.user.email' %></th>
       <th><%= t :'mongoid.attributes.user.provider' %></th>
+      <th><%= t :'mongoid.attributes.user.roles' %></th>
       <th><%= t :'mongoid.attributes.user.created_at' %></th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
       <td><%= user.name %></td>
       <td><%= user.email.nil? ? empty_char : user.email %></td>
       <td><%= provider_profile_link user.provider, user.uid %></td>
+      <td><%= roles_list(user.roles) %></td>
       <td><%= l user.created_at, format: :short %></td>
     </tr>
     <% end %>
