@@ -14,7 +14,7 @@
   <tbody>
     <% @users.each do |user| %>
     <tr>
-      <td><%= user.id %></td>
+      <td><%= link_to user.id, admin_user_path(user) %></td>
       <td><%= user.name %></td>
       <td><%= user.email.nil? ? empty_char : user.email %></td>
       <td><%= provider_profile_link user.provider, user.uid %></td>

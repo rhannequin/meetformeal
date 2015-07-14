@@ -30,4 +30,34 @@ describe Admin::UsersController, type: :controller do
       expect(assigns(:users)).to match_array([user, user1, user2])
     end
   end
+
+  describe 'GET #show' do
+    let(:user) { create :admin }
+    let(:user_showed) { create :user }
+
+    before(:each) { sign_in user }
+
+    it "can't access if not authorized" do
+      sign_in create(:user)
+      get :show, id: user_showed.id
+      expect(response).not_to be_success
+      expect(response).not_to have_http_status(200)
+    end
+
+    it 'responds successfully with an HTTP 200 status code' do
+      get :show, id: user_showed.id
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it 'renders the show template' do
+      get :show, id: user_showed.id
+      expect(response).to render_template('show')
+    end
+
+    it 'loads the user into @user' do
+      get :show, id: user_showed.id
+      expect(assigns(:user)).to eq(user_showed)
+    end
+  end
 end

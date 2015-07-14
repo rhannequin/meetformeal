@@ -4,6 +4,10 @@ fr:
     users:
       index:
         title: Utilisateurs
+      show:
+        general: Général
+        title: Utilisateur %{name}
+        activity: Activité
   devise:
     passwords:
       edit:
@@ -41,9 +45,14 @@ fr:
       user:
         created_at: Date d'inscription
         email: Adresse e-mail
+        id: Identifiant
+        last_sign_in_at: Date dernière connexion
+        last_sign_in_ip: IP dernière connexion
         name: Nom d'utilisateur
         provider: Fournisseur
         roles: Rôles
+        sign_in_count: Nombre de connexon
+        updated_at: Date de mise à jour
   simple_form:
     labels:
       user:

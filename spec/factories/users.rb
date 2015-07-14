@@ -15,6 +15,11 @@ FactoryGirl.define do
       provider 'twitter'
       sequence(:uid) { |n| "#{provider}-user-#{n}" }
     end
+
+    trait :already_signed_in do
+      last_sign_in_at Date.new
+      last_sign_in_ip { Faker::Internet.ip_v4_address }
+    end
   end
 
   factory :admin, parent: :user do
