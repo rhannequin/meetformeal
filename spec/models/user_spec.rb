@@ -47,4 +47,20 @@ describe User, type: :model do
       expect(user.encrypted_password).not_to be_blank
     end
   end
+
+  describe 'soft delete'do
+    it 'is properly deleted' do
+      user # Used to say to RSpec that we need that record
+      user_count_before = User.count
+      user.destroy
+      expect(User.count).to eq(user_count_before - 1)
+    end
+
+    it 'is an be found as deleted' do
+      user.destroy
+      from_db = User.unscoped.find(user.id)
+      expect(from_db).not_to be_nil
+      expect(from_db.deleted?).to be_truthy
+    end
+  end
 end

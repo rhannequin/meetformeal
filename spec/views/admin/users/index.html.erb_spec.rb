@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe 'admin/users/index.html.erb' do
+  before(:each) do
+    allow(view).to receive_messages(current_user: nil)
+  end
+
   describe 'usual scenario' do
     let(:users) { create_list :user, 2 }
 
@@ -15,6 +19,7 @@ describe 'admin/users/index.html.erb' do
         expect(rendered).to include(user.name)
         expect(rendered).to include(user.email)
         expect(rendered).to include(l(user.created_at, format: :short))
+        expect(rendered).to include(admin_user_path(user))
       end
     end
   end

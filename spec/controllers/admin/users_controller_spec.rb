@@ -60,4 +60,43 @@ describe Admin::UsersController, type: :controller do
       expect(assigns(:user)).to eq(user_showed)
     end
   end
+
+  describe 'DELETE #destroy' do
+    let(:connected_user) { create :admin }
+    let(:user_to_destroy) { create :user }
+
+    before(:each) { sign_in connected_user }
+
+    it 'destroys a user' do
+      expect(User.find(user_to_destroy.id).deleted?).to be_falsy
+      delete :destroy, id: user_to_destroy.id
+      expect(User.unscoped.find(user_to_destroy.id).deleted?).to be_truthy
+    end
+
+    it 'displays success flash message' do
+      delete :destroy, id: user_to_destroy.id
+      expect(flash[:notice]).to be_present
+      expect(flash[:notice]).to eq(I18n.t(:'controllers.users.destroy.flash.success'))
+      expect(flash[:error]).not_to be_present
+    end
+
+    describe 'trying to delete the current connected user' do
+      it 'does not work' do
+        delete :destroy, id: connected_user.id
+        expect(User.where(id: connected_user.id).count).to eq(1)
+      end
+
+      it 'displays error flash message' do
+        delete :destroy, id: connected_user.id
+        expect(flash[:notice]).not_to be_present
+        expect(flash[:error]).to be_present
+        expect(flash[:error]).to eq(I18n.t(:'controllers.users.destroy.flash.error'))
+      end
+    end
+
+    it 'redirects to #index' do
+      delete :destroy, id: user_to_destroy.id
+      expect(response).to redirect_to(admin_users_path)
+    end
+  end
 end

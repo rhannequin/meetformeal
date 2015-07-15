@@ -15,4 +15,12 @@ describe 'routing to users' do
       id: '1'
     )
   end
+
+  it 'routes DELETE /admin/users/1 to admin_users#destroy' do
+    expect(delete: '/admin/users/1').to route_to(
+      controller: 'admin/users',
+      action: 'destroy',
+      id: '1'
+    )
+  end
 end

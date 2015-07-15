@@ -3,11 +3,18 @@ en:
   admin:
     users:
       index:
+        cant_delete_yourself: You can't delete yourself
         title: Users
       show:
+        activity: Activity
         general: General
         title: User %{name}
-        activity: Activity
+  controllers:
+    users:
+      destroy:
+        flash:
+          error: Impossible to delete this user.
+          success: User deleted.
   devise:
     passwords:
       edit:
@@ -53,6 +60,11 @@ en:
         roles: Roles
         sign_in_count: Sign in count
         updated_at: Updated
+  scaffold:
+    actions: Actions
+    back: Back
+    confirm: Are you sure you want to delete?
+    delete: Delete
   simple_form:
     labels:
       user:

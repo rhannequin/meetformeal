@@ -21,6 +21,9 @@ gem 'omniauth-facebook'
 gem 'cancancan'
 gem 'rolify'
 
+# Soft-delete
+gem 'mongoid-paranoia'
+
 # Environment configuration
 gem 'figaro'
 

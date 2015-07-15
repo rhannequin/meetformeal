@@ -3,11 +3,18 @@ fr:
   admin:
     users:
       index:
+        cant_delete_yourself: Vous ne pouvez pas vous supprimer vous-même
         title: Utilisateurs
       show:
+        activity: Activité
         general: Général
         title: Utilisateur %{name}
-        activity: Activité
+  controllers:
+    users:
+      destroy:
+        flash:
+          error: Impossible de supprimer cet utilisateur.
+          success: Utilisateur supprimé.
   devise:
     passwords:
       edit:
@@ -53,6 +60,11 @@ fr:
         roles: Rôles
         sign_in_count: Nombre de connexon
         updated_at: Date de mise à jour
+  scaffold:
+    actions: Actions
+    back: Retour
+    confirm: Êtes-vous sûr(e) de vouloir supprimer ?
+    delete: Supprimer
   simple_form:
     labels:
       user:

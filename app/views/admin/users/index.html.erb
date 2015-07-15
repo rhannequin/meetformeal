@@ -9,6 +9,7 @@
       <th><%= t :'mongoid.attributes.user.provider' %></th>
       <th><%= t :'mongoid.attributes.user.roles' %></th>
       <th><%= t :'mongoid.attributes.user.created_at' %></th>
+      <th><%= t :'scaffold.actions' %></th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,15 @@
       <td><%= provider_profile_link user.provider, user.uid %></td>
       <td><%= roles_list(user.roles) %></td>
       <td><%= l user.created_at, format: :short %></td>
+      <td>
+        <% if user == current_user %>
+          <button class="btn btn-danger" title="<%= t :'.cant_delete_yourself' %>" disabled>
+            <%= t :'scaffold.delete' %>
+          </button>
+        <% else %>
+          <%= link_to t(:'scaffold.delete'), admin_user_path(user), method: :delete, class: 'btn btn-danger', data: { confirm: t(:'scaffold.confirm') } %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>

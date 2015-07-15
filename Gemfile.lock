@@ -149,6 +149,9 @@ GEM
       moped (~> 2.0.0)
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
+    mongoid-paranoia (1.0.0)
+      activesupport
+      mongoid (~> 4.0.0)
     mongoid-rspec (2.0.0)
       mongoid (~> 4.0.0)
       rake
@@ -346,6 +349,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mongoid (~> 4.0.0)
+  mongoid-paranoia
   mongoid-rspec (~> 2.0.0.rc1)
   omniauth
   omniauth-facebook
