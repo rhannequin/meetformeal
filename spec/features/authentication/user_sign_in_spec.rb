@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Sign in' do
   let(:user) { create(:user) }
   background do
-    visit root_path
+    visit new_user_session_path
   end
 
   scenario 'an user can see the sign in form' do

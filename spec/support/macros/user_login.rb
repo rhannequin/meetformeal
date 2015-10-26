@@ -3,7 +3,7 @@ module Macros
     def login_with(user, options = {})
       options.reverse_merge!(password: 'password')
 
-      visit root_url
+      visit new_user_session_path
 
       within 'form' do
         find('#user_email').set user.email

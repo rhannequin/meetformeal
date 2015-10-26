@@ -9,7 +9,7 @@ feature 'Sign out' do
   end
 
   scenario 'successfully sign out' do
-    expect(page).to have_content I18n.t(:'devise.failure.unauthenticated')
-    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content I18n.t(:'devise.sessions.signed_out')
+    expect(current_path).to eq(root_path)
   end
 end
