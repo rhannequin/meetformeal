@@ -46,6 +46,11 @@ fr:
       title: Page d'accueil
   layouts:
     application_name: Funkystarterpp
+    navbar:
+      admin:
+        name: Admin
+        users: Utilisateurs
+      home: Accueil
     welcome: Bienvenue, %{user}
   mongoid:
     attributes:
