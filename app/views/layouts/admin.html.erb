@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= t :'layouts.application_name' %><%= t :'layouts.admin_panel_title' %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container">
+
+    <%= render 'layouts/header' %>
+
+    <%= render 'layouts/alerts' %>
+
+    <div>
+    <% if user_signed_in? -%>
+      <p><%= t :'layouts.welcome', user: current_user.name %></p>
+    <% end -%>
+    </div>
+
+    <%= yield %>
+
+  </div>
+
+</body>
+</html>

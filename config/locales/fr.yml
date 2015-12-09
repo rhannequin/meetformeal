@@ -46,6 +46,7 @@ fr:
       title: Page d'accueil
   layouts:
     application_name: Funkystarterpp
+    admin_panel_title: Admin
     navbar:
       admin:
         name: Admin
