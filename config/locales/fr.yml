@@ -26,6 +26,11 @@ fr:
         forgot_your_password: Mot de passe oublié ?
         send_me_reset_password_instructions: Envoyez-moi les instructions pour réinitialiser mon mot de passe
     registrations:
+      edit:
+        change_my_account: Modifier mes informations personnelles
+        confirm_hint: nous avons de votre mot de passe actuel pour confirmer les changements
+        leave_blank_hint: laissez vide si vous ne souhaitez pas modifier
+        update: Mettre à jour
       new:
         sign_up: Inscription
     sessions:
@@ -74,6 +79,7 @@ fr:
   simple_form:
     labels:
       user:
+        current_password: Mot de passe actuel
         email: Adresse e-mail
         name: Nom d'utilisateur
         password: Mot de passe

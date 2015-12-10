@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4><%= t(:'.change_my_account') %></h4>
+  </div>
+  <div class="panel-body">
+    <%= simple_form_for(resource, as: resource_name,
+                                  url: registration_path(resource_name),
+                                  html: { role: 'form' }) do |f| %>
+      <div class="form-group">
+        <%= f.input :email, autofocus: true, class: 'form-control' %>
+      </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="form-group">
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= f.input :password, input_html: { autocomplete: :off }, hint: t(:'.leave_blank_hint'), required: false, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.input :password_confirmation, input_html: { autocomplete: :off }, required: false, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.input :current_password, input_html: { autocomplete: :off }, hint: t(:'.confirm_hint'), required: true, class: 'form-control' %>
+      </div>
+      <%= f.submit t(:'.update'), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<%= render "devise/shared/links" %>

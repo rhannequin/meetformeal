@@ -26,6 +26,11 @@ en:
         forgot_your_password: Forgot your password
         send_me_reset_password_instructions: Send me reset password instructions
     registrations:
+      edit:
+        change_my_account: Change my personal information
+        confirm_hint: we need your current password to confirm your changes
+        leave_blank_hint: leave it blank if you don't want to change it
+        update: Update
       new:
         sign_up: Sign up
     sessions:
@@ -74,6 +79,7 @@ en:
   simple_form:
     labels:
       user:
+        current_password: Current password
         email: Email
         name: Username
         password: Password
