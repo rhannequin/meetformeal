@@ -28,7 +28,7 @@ fr:
     registrations:
       edit:
         change_my_account: Modifier mes informations personnelles
-        confirm_hint: nous avons de votre mot de passe actuel pour confirmer les changements
+        confirm_hint: nous avons besoin de votre mot de passe actuel pour confirmer les changements
         leave_blank_hint: laissez vide si vous ne souhaitez pas modifier
         update: Mettre à jour
       new:
