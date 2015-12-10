@@ -1,9 +1,9 @@
 language: ruby
+cache: bundler
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.0
-  - 2.2.0
+  - 2.1.7
+  - 2.2.3
+bundler_args: --without production
 script: bundle exec rspec spec
 services:
   - mongodb

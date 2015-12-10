@@ -7,10 +7,6 @@ gem 'rails', '~> 4.2.0'
 gem 'mongoid', '~> 4.0.0'
 gem 'bson_ext'
 
-# Application server
-gem 'unicorn'
-gem 'unicorn-rails'
-
 # Authentication
 gem 'devise'
 gem 'omniauth'
@@ -51,6 +47,11 @@ gem 'responders', '~> 2.0'
 
 # Simple Form
 gem 'simple_form'
+
+group :production do
+  gem 'unicorn'                       # Application server
+  gem 'unicorn-rails'                 # Rails configuration for unicorn
+end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'         # RSpec test framework
