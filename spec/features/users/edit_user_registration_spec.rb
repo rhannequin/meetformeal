@@ -20,8 +20,11 @@ feature 'User edit registration' do
   end
 
   describe 'when a user changes personal information' do
+    let(:new_name) { build(:user).name }
+
     background do
       within 'form#edit_user' do
+        fill_in I18n.t(:'simple_form.labels.user.name'), with: new_name
         fill_in I18n.t(:'simple_form.labels.user.email'), with: 'new.email@example.com'
         fill_in I18n.t(:'simple_form.labels.user.password'), with: 'new password'
         fill_in I18n.t(:'simple_form.labels.user.password_confirmation'), with: 'new password'
@@ -32,6 +35,7 @@ feature 'User edit registration' do
 
     scenario 'his information are updated' do
       expect(current_path).to eq(root_path)
+      expect(page).to have_content new_name
       expect(page).to have_content I18n.t(:'devise.registrations.updated')
     end
   end
