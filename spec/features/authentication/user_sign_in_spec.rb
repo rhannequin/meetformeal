@@ -6,7 +6,7 @@ feature 'Sign in' do
     visit new_user_session_path
   end
 
-  scenario 'an user can see the sign in form' do
+  scenario 'a user can see the sign in form' do
     expect(page).to have_content I18n.t(:'devise.sessions.new.sign_in')
 
     within 'form#new_user' do
@@ -17,9 +17,9 @@ feature 'Sign in' do
     end
   end
 
-  describe 'when an user provides valid credentials' do
+  describe 'when a user provides valid credentials' do
     background do
-      within 'form' do
+      within 'form#new_user' do
         fill_in I18n.t(:'simple_form.labels.user.email'), with: user.email
         find('#user_password').set 'password'
         click_button I18n.t(:'devise.sessions.new.sign_in')

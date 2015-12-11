@@ -42,8 +42,13 @@ describe 'layouts/_header.html.erb' do
       end
 
       describe 'as a regular user' do
+        before(:each) { render }
+
+        it 'has a Setting link' do
+          expect(rendered).to include(I18n.t(:'layouts.navbar.account.settings'))
+        end
+
         it 'does not have admin link' do
-          render
           expect(rendered).not_to include(I18n.t(:'layouts.navbar.admin.name'))
         end
       end
