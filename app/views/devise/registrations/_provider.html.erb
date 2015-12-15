@@ -1,0 +1,17 @@
+<p>
+  <%= t :'.provider_account' %>
+</p>
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <strong><%= t :'mongoid.attributes.user.name' %></strong><br>
+      <%= resource.name %>
+    </p>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <strong><%= t :'mongoid.attributes.user.provider' %></strong><br>
+      <%= provider_profile_link resource.provider, resource.uid %>
+    </p>
+  </div>
+</div>

@@ -28,11 +28,14 @@ en:
     registrations:
       edit:
         change_my_account: Change my personal information
+      form:
         confirm_hint: we need your current password to confirm your changes
         leave_blank_hint: leave it blank if you don't want to change it
         update: Update
       new:
         sign_up: Sign up
+      provider:
+        provider_account: Your account is linked to a social network, you don't have credentials to change.
     sessions:
       destroy:
         sign_out: Sign out

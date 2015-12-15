@@ -28,11 +28,14 @@ fr:
     registrations:
       edit:
         change_my_account: Modifier mes informations personnelles
+      form:
         confirm_hint: nous avons besoin de votre mot de passe actuel pour confirmer les changements
         leave_blank_hint: laissez vide si vous ne souhaitez pas modifier
         update: Mettre à jour
       new:
         sign_up: Inscription
+      provider:
+        provider_account: Votre compte est associé à un réseau social, vous n'avez pas d'identifiant à changer.
     sessions:
       destroy:
         sign_out: Déconnexion
