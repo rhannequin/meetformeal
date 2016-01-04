@@ -40,11 +40,12 @@ set :deploy_via, :remote_cache
 # rbenv setup
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
+set :rbenv_path, '$HOME/.rbenv'
 
 # Bundler setup
 set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_without, %w{development test}.join(' ')
-set :bundle_flags, '--deployment --quiet --binstubs'
+set :bundle_flags, '--deployment --quiet --binstubs --clean'
 set :bundle_jobs, 4
 
 # Environment PATH
